@@ -1,10 +1,26 @@
 table
   thead
-    tr
-      th name
-      th date
-      th number
-      th description
+    tr.class1
+      th
+        = link_to "name", root_path(:order_name => "#{sort_direction params[:order_name]}",
+          name: params[:name], date: params[:date],
+          number: params[:number], description: params[:description]), :remote => true
+        i.fa.fa-fw.fa-sort
+      th
+        = link_to "date", root_path(:order_date => "#{sort_direction params[:order_date]}",
+        name: params[:name], date: params[:date],
+        number: params[:number], description: params[:description]), :remote => true
+        i.fa.fa-fw.fa-sort
+      th
+        = link_to "number", root_path(:order_number => "#{sort_direction params[:order_number]}",
+        name: params[:name], date: params[:date],
+        number: params[:number], description: params[:description]), :remote => true
+        i.fa.fa-fw.fa-sort
+      th
+        = link_to "description", root_path(:order_description => "#{sort_direction params[:order_description]}",
+        name: params[:name], date: params[:date],
+        number: params[:number], description: params[:description]), :remote => true
+        i.fa.fa-fw.fa-sort
   tbody
     - @information.each do |data|
       tr
