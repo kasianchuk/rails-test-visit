@@ -1,0 +1,33 @@
+- flash.each do |key, value|
+  = content_tag :div, value, class: "flash #{key}"
+
+h1 Visit.org Sample Project
+p
+  | Please complete the items on the checklist.
+
+  span = link_to 'This is the CSV to use.', 'test.csv'
+
+h3 Checklist
+ol
+  li Create model to store CSV data
+  li Upload CSV via a form
+  li Save CSV records to database
+  li Display success/error message
+  li Display users in table
+
+
+h2 Result
+
+= form_tag root_path, id:"data_search", method: :get, remote: true, :role => "search" do
+  = text_field_tag 'name', params[:name], placeholder: :name
+  = text_field_tag 'date', params[:date], placeholder: :date
+  = text_field_tag 'number', params[:number], placeholder: :number
+  = text_field_tag 'description', params[:description], placeholder: :description
+
+#table_block
+  = render 'table_information'
+
+h4 Import csv file
+= form_tag import_welcome_index_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import file"

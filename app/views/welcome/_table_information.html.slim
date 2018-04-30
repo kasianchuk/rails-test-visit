@@ -1,0 +1,14 @@
+table
+  thead
+    tr
+      th name
+      th date
+      th number
+      th description
+  tbody
+    - @information.each do |data|
+      tr
+        td = data.name
+        td = data.date
+        td = data.number
+        td = data.description
